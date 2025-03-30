@@ -9,14 +9,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
   useEffect(() => {
     const isServiceWorker = 'serviceWorker' in navigator
     if (isServiceWorker) {
-      window.addEventListener('load', () => {
-        console.log('window is loaded');
-        
-        navigator.serviceWorker
-          .register('/sw.js')
-          .then((registration) => console.log('Service Worker registered:', registration))
-          .catch((error) => console.error('Service Worker registration failed:', error));
-      });
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then((registration) => console.log('Service Worker registered:', registration))
+        .catch((error) => console.error('Service Worker registration failed:', error));
     } else {
       console.warn('Service workers are not supported in this browser.');
     }
