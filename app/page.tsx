@@ -4,13 +4,13 @@ import Image from 'next/image';
 import { JSX } from 'react';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000/'),
+  // metadataBase: new URL('http://localhost:3000/'),
   title: 'Home | AwesomeCo',
   description: 'Welcome to AwesomeCo - Innovating the future with stunning solutions.',
   openGraph: {
     title: 'Home | AwesomeCo',
     description: 'Welcome to AwesomeCo - Innovating the future with stunning solutions.',
-    url: 'https://yourdomain.com',
+    url: 'https://seo-service-worker.vercel.app/',
     images: ['/images/logo.webp'],
   },
 };

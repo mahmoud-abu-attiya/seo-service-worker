@@ -32,7 +32,7 @@ export const metadata: Metadata = {
    openGraph: {
       title: 'About Us | AwesomeCo',
       description: 'Discover our story and what drives us to excellence.',
-      url: 'https://yourdomain.com/about',
+      url: 'https://seo-service-worker.vercel.app/about',
       images: ['/images/logo.webp'],
    },
    twitter: {
