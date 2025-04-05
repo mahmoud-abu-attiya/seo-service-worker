@@ -22,16 +22,16 @@ const MemberCard = ({ image, name, jobTitle, linkedinUrl, twitterUrl }: MemberCa
                   src={image}
                   alt={name} />
             </div>
-            <div className="p-4 md:p-6 flex flex-col gap-4">
+            <div className="p-3 md:p-6 flex flex-col gap-2 md:gap-4">
                <h5 className="font-bold text-xl">
                   {name}
                </h5>
                <p className='text-gray-200'>{jobTitle}</p>
-            <div className="flex text-xs gap-4">
-               <Link href={linkedinUrl} className="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-300">
+            <div className="flex text-xs gap-2 md:gap-4">
+               <Link href={linkedinUrl} className="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-300">
                   LinkedIn
                </Link>
-               <Link href={twitterUrl} className="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-300">
+               <Link href={twitterUrl} className="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-300">
                   Twitter
                </Link>
             </div>
