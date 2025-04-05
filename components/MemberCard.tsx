@@ -18,7 +18,7 @@ const MemberCard = ({ image, name, jobTitle, linkedinUrl, twitterUrl }: MemberCa
                className="relative mx-2 md:mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40 h-fit w-fit">
                <Image
                   height={300}
-                  width={300}
+                  width={200}
                   src={image}
                   alt={name} />
             </div>

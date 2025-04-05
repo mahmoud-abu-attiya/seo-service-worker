@@ -1,6 +1,8 @@
+'use client';
+
+import { JSX, useEffect } from 'react';
 import MemberCard from '@/components/MemberCard';
-import { Metadata } from 'next';
-import { JSX } from 'react';
+// import { Metadata } from 'next';
 
 const teamMembers = [
    {
@@ -26,23 +28,28 @@ const teamMembers = [
    },
 ]
 
-export const metadata: Metadata = {
-   title: 'About Us | AwesomeCo',
-   description: 'Learn more about our mission to deliver amazing services and solutions.',
-   openGraph: {
-      title: 'About Us | AwesomeCo',
-      description: 'Discover our story and what drives us to excellence.',
-      url: 'https://seo-service-worker.vercel.app/about',
-      images: ['/images/logo.webp'],
-   },
-   twitter: {
-      card: 'summary_large_image',
-      title: 'About Us | AwesomeCo',
-      description: 'Discover our story and what drives us to excellence.',
-   },
-};
+// export const metadata: Metadata = {
+//    title: 'About Us | AwesomeCo',
+//    description: 'Learn more about our mission to deliver amazing services and solutions.',
+//    openGraph: {
+//       title: 'About Us | AwesomeCo',
+//       description: 'Discover our story and what drives us to excellence.',
+//       url: 'https://seo-service-worker.vercel.app/about',
+//       images: ['/images/logo.webp'],
+//    },
+//    twitter: {
+//       card: 'summary_large_image',
+//       title: 'About Us | AwesomeCo',
+//       description: 'Discover our story and what drives us to excellence.',
+//    },
+// };
 
 export default function About(): JSX.Element {
+   useEffect(() => {
+      if (!navigator.onLine) {
+         alert('You are offline! Some features may not work.');
+      }
+   }, []);
    return (
       <div className="max-w-5xl mx-auto p-4 md:p-6 mb-6">
          <section className='grid md:grid-cols-2 gap-8 py-20'>
