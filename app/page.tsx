@@ -1,31 +1,22 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { JSX } from 'react';
-import Head from 'next/head';
+
+export const metadata: Metadata = {
+  title: 'Home | AwesomeCo',
+  description: 'Welcome to AwesomeCo - Innovating the future with stunning solutions.',
+  openGraph: {
+    title: 'Home | AwesomeCo',
+    description: 'Welcome to AwesomeCo - Innovating the future with stunning solutions.',
+    url: 'https://seo-service-worker.vercel.app/',
+    images: ['/images/logo.webp'],
+  },
+};
 
 export default function Home(): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Home | AwesomeCo</title>
-        <meta name="description" content="Welcome to AwesomeCo - Innovating the future with stunning solutions. Learn more about our mission to deliver amazing services and solutions." />
-        <link rel="canonical" href="https://seo-service-worker.vercel.app/" />
-
-        <meta property="og:title" content="Home | AwesomeCo" />
-        <meta property="og:description" content="Discover our story and what drives us to excellence." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://seo-service-worker.vercel.app/" />
-        <meta property="og:image" content="/images/logo.webp" />
-        <meta property="og:site_name" content="AwesomeCo" />
-        <meta property="og:locale" content="en_US" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content='Home | AwesomeCo' />
-        <meta name="twitter:description" content='Discover our story and what drives us to excellence.' />
-        <meta name="twitter:image" content="/images/logo.webp" />
-
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
       <div className="bg-gradient-to-b from-indigo-500 to-purple-600 text-white">
         <section className="min-h-screen flex flex-col md:flex-row items-center justify-center px-4 py-20">
           <div className="text-center md:text-left max-w-md md:mr-8">
