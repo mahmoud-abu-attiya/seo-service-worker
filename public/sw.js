@@ -1,7 +1,14 @@
 const CACHE_NAME = "my-nextjs-cache-v1";
-const urlsToCache = ["/about"]; // Pre-cache only /about
 
-// Install event: Cache the /about page
+// Pre-cache /about and specific images
+const urlsToCache = [
+   "/about",
+   "/images/team/ceo.webp",
+   "/images/team/project-manager.webp",
+   "/images/team/lead-developer.webp",
+];
+
+// Install event: Cache /about and images
 self.addEventListener("install", (event) => {
    event.waitUntil(
       caches.open(CACHE_NAME).then((cache) => {
@@ -11,28 +18,29 @@ self.addEventListener("install", (event) => {
    );
 });
 
-// Fetch event: Cache only /about and its CSS, with offline fallback
+// Fetch event: Cache /about, its CSS, and images, with offline fallback
 self.addEventListener("fetch", (event) => {
    const requestUrl = event.request.url;
    const isAboutPage = requestUrl.endsWith("/about");
-   const isCss = requestUrl.includes(".css"); // Assuming Tailwind CSS is in a .css file
+   const isCss = requestUrl.includes(".css");
+   const isImage = /\.(jpg|jpeg|png|gif|webp)$/.test(requestUrl); // Match common image extensions
 
    event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
-         // Serve cached response if available (only /about or its CSS should be cached)
+         // Serve cached response if available
          if (cachedResponse) {
             return cachedResponse;
          }
 
-         // Only cache /about and its CSS
-         if (isAboutPage || isCss) {
+         // Only cache /about, its CSS, and images
+         if (isAboutPage || isCss || isImage) {
             return fetch(event.request)
                .then((networkResponse) => {
                   if (!networkResponse || networkResponse.status !== 200) {
                      return networkResponse;
                   }
 
-                  // Cache /about or CSS
+                  // Cache /about, CSS, or images
                   return caches.open(CACHE_NAME).then((cache) => {
                      cache.put(event.request, networkResponse.clone());
                      return networkResponse;
@@ -42,7 +50,7 @@ self.addEventListener("fetch", (event) => {
                   // Offline fallback for navigation requests
                   if (event.request.mode === "navigate") {
                      return new Response(
-                        "<h1>You are offline</h1><p>Please check your internet connection and try again.</p><a href='/about'>Go to About page</a>",
+                        "<h1>You are offline</h1><p>Please check your internet connection and try again.</p>",
                         {
                            headers: { "Content-Type": "text/html" },
                         }
@@ -53,10 +61,9 @@ self.addEventListener("fetch", (event) => {
 
          // For all other requests (e.g., home page), fetch without caching
          return fetch(event.request).catch(() => {
-            // Offline fallback for navigation requests
             if (event.request.mode === "navigate") {
                return new Response(
-                  "<h1>You are offline</h1><p>Please check your internet connection and try again.</p><a href='/about'>Go to About page</a>",
+                  "<h1>You are offline</h1><p>Please check your internet connection and try again.</p>",
                   {
                      headers: { "Content-Type": "text/html" },
                   }
