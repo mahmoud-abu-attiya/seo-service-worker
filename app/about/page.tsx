@@ -2,7 +2,7 @@
 
 import { JSX, useEffect } from 'react';
 import MemberCard from '@/components/MemberCard';
-// import { Metadata } from 'next';
+import Head from 'next/head';
 
 const teamMembers = [
    {
@@ -28,22 +28,6 @@ const teamMembers = [
    },
 ]
 
-// export const metadata: Metadata = {
-//    title: 'About Us | AwesomeCo',
-//    description: 'Learn more about our mission to deliver amazing services and solutions.',
-//    openGraph: {
-//       title: 'About Us | AwesomeCo',
-//       description: 'Discover our story and what drives us to excellence.',
-//       url: 'https://seo-service-worker.vercel.app/about',
-//       images: ['/images/logo.webp'],
-//    },
-//    twitter: {
-//       card: 'summary_large_image',
-//       title: 'About Us | AwesomeCo',
-//       description: 'Discover our story and what drives us to excellence.',
-//    },
-// };
-
 export default function About(): JSX.Element {
    useEffect(() => {
       if (!navigator.onLine) {
@@ -51,6 +35,27 @@ export default function About(): JSX.Element {
       }
    }, []);
    return (
+      <>
+      <Head>
+         <title>About Us | AwesomeCo</title>
+         <meta name="description" content="Learn more about our mission to deliver amazing services and solutions." />
+         <link rel="canonical" href="https://seo-service-worker.vercel.app/about" />
+
+         <meta property="og:title" content="About Us | AwesomeCo" />
+         <meta property="og:description" content="Discover our story and what drives us to excellence." />
+         <meta property="og:type" content="website" />
+         <meta property="og:url" content="https://seo-service-worker.vercel.app/about" />
+         <meta property="og:image" content="/images/logo.webp" />
+         <meta property="og:site_name" content="AwesomeCo" />
+         <meta property="og:locale" content="en_US" />
+
+         <meta name="twitter:card" content="summary_large_image" />
+         <meta name="twitter:title" content='About Us | AwesomeCo' />
+         <meta name="twitter:description" content='Discover our story and what drives us to excellence.' />
+         <meta name="twitter:image" content="/images/logo.webp" />
+         
+         <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <div className="max-w-5xl mx-auto p-4 md:p-6 mb-6">
          <section className='grid md:grid-cols-2 gap-8 py-20'>
             <h1 className='text-5xl md:text-6xl font-bold'>Discover Our <span className="text-indigo-700">Journey</span> and Values</h1>
@@ -74,5 +79,6 @@ export default function About(): JSX.Element {
             </div>
          </section>
       </div>
+      </>
    );
 }
